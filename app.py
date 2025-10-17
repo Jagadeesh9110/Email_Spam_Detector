@@ -16,7 +16,7 @@ try:
     with open('vectorizer.pkl','rb') as f:
         vectorizer =pickle.load(f)
     with open('classifier.pkl','rb') as f:
-        classifier =pickle.Load(f)
+        classifier =pickle.load(f)
 except FileNotFoundError:
     st.error("Model files not found. Please ensure 'vectorizer.pkl' and 'classifier.pkl' are in the same directory as this script.")
     st.stop()
