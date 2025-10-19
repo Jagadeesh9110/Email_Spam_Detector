@@ -2,7 +2,7 @@
 
 This project is a machine learning-based application designed to classify emails as either **"Spam"** or **"Ham"** (not spam). It uses a Support Vector Machine (SVM) model trained on the Enron email dataset to make predictions. The application is deployed as an interactive web app using Streamlit.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](YOUR_STREAMLIT_APP_URL_HERE)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://spam-classifier-9110.streamlit.app/)
 
 ---
 
