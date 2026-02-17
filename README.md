@@ -2,6 +2,8 @@
 
 A Machine Learning project to classify emails as **Spam** or **Ham** (Not Spam) using TF-IDF Vectorization and a Linear Support Vector Machine (SVM).
 
+### 🔴 [Live Demo](https://spam-classifier-9110.streamlit.app/)
+
 ## 🚀 Key Features
 
 *   **Robust Preprocessing:** Handles special characters, removes stopwords, and performs stemming to clean email text.
