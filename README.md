@@ -1,45 +1,79 @@
-# 📧 Email Spam Detector
+# Email Spam Detector
 
-This project is a machine learning-based application designed to classify emails as either **"Spam"** or **"Ham"** (not spam). It uses a Support Vector Machine (SVM) model trained on the Enron email dataset to make predictions. The application is deployed as an interactive web app using Streamlit.
+A Machine Learning project to classify emails as **Spam** or **Ham** (Not Spam) using TF-IDF Vectorization and a Linear Support Vector Machine (SVM).
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://spam-classifier-9110.streamlit.app/)
+## 🚀 Key Features
 
----
+*   **Robust Preprocessing:** Handles special characters, removes stopwords, and performs stemming to clean email text.
+*   **High Accuracy:** Achieves ~97% accuracy on the test set.
+*   **Confidence Scores:** Displays the probability confidence for each prediction.
+*   **Interactive UI:** Built with Streamlit for a user-friendly experience.
+*   **Reproducible Pipeline:** Includes a dedicated training script (`train.py`) to replicate results.
 
-##  Project Overview
+## 📂 Project Structure
 
-The core of this project is a binary classification model. The process involves several key machine learning steps:
-1.  **Data Loading & Cleaning:** The Enron email dataset is loaded, cleaned of missing values, and prepared for processing.
-2.  **Text Preprocessing:** Email text is normalized by removing punctuation, converting to lowercase, removing common stop words, and applying stemming to reduce words to their root form.
-3.  **Feature Extraction:** The cleaned text is converted into a numerical format using the **TF-IDF (Term Frequency-Inverse Document Frequency)** technique.
-4.  **Model Training & Evaluation:** Multiple models (Naive Bayes, Logistic Regression, and SVM) were trained and evaluated. The SVM model was selected as the best performer with an accuracy of over 98%.
-5.  **Deployment:** The trained TF-IDF vectorizer and SVM model were saved and deployed as a web application using Streamlit Cloud.
+```
+Email_Spam_Detector/
+│
+├── app.py                # Streamlit frontend application
+├── train.py              # Script to retrain the model
+├── preprocessing.py      # Reusable preprocessing module
+├── vectorizer.pkl        # Saved TF-IDF vectorizer model
+├── classifier.pkl        # Saved SVM classifier model
+├── confusion_matrix.png  # Confusion matrix visualization
+├── requirements.txt      # Project dependencies
+└── README.md             # Project documentation
+```
 
----
+## 📊 Dataset & Preprocessing
 
-##  Features
+### Dataset
+The model is trained on a combined dataset of **35,607 unique emails**, sourced from:
+1.  **Enron Email Dataset:** A large collection of real-world emails.
+2.  **SMS Spam Collection:** Additional spam/ham examples to improve robustness.
 
-* **Interactive Web Interface:** A simple and clean UI to paste email text and get an instant classification.
-* **High Accuracy:** The underlying SVM model achieves over 98% accuracy on the test set.
-* **Real-time Prediction:** Classifies new, unseen emails in real-time.
+### Preprocessing Pipeline
+The text data undergoes the following steps before training/inference:
+1.  **Cleaning:** Removal of "Subject:" prefixes and non-alphabetic characters.
+2.  **Normalization:** Conversion to lowercase.
+3.  **Stopword Removal:** Elimination of common English words (e.g., "the", "is", "at") using NLTK.
+4.  **Stemming:** Reducing words to their root form (e.g., "running" -> "run") using the Porter Stemmer.
+5.  **Vectorization:** TF-IDF (Term Frequency-Inverse Document Frequency) with top 3000 features.
 
----
+## 📈 Evaluation Results
 
-##  Technology Stack
+The Linear SVM model was evaluated on a 20% held-out test set.
 
-* **Programming Language:** Python 3
-* **Machine Learning Libraries:** Scikit-learn, NLTK
-* **Data Handling:** Pandas, NumPy
-* **Web Framework:** Streamlit
-* **Deployment:** Streamlit Cloud, GitHub
+*   **Accuracy:** ~97%
+*   **Precision:** ~97%
+*   **Recall:** ~97%
+*   **F1-Score:** ~97%
 
----
+### Confusion Matrix
+![Confusion Matrix](confusion_matrix.png)
 
-##  How to Run the Project Locally
+## 🛠️ How to Run
 
-To run this application on your local machine, follow these steps:
+1.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/Jagadeesh9110/email-spam-detector.git](https://github.com/Jagadeesh9110/email-spam-detector.git)
-cd email-spam-detector
+2.  **Train the Model (Optional):**
+    If you want to retrain the model from scratch:
+    ```bash
+    python train.py
+    ```
+    This will generate new `vectorizer.pkl`, `classifier.pkl`, and `confusion_matrix.png` files.
+
+3.  **Run the App:**
+    ```bash
+    streamlit run app.py
+    ```
+
+## 🧠 Model Information
+
+*   **Algorithm:** Linear Support Vector Machine (SVC)
+*   **Kernel:** Linear
+*   **Probability:** Enabled (for confidence scores)
+*   **Feature Extraction:** TF-IDF (3000 max features)
